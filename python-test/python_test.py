@@ -2,23 +2,17 @@ import json
 import random
 import pytest
 class TestClass:
-    def test_method(self) -> (dict, dict, dict, ):
+    def test_method(self) -> (dict, dict, dict, dict, ):
         # NOTE: Get all the parse commands
         with open('data.txt', 'r') as file:
             data = json.loads(file.read())
         parse_commands = []
-        for row in data:
-            if 'function' in row and row['function'] == 'parse':
-                parse_commands.append(row.copy())
+        [parse_commands.append(row.copy()) for row in data if 'function' in row and row['function'] == 'parse']
         print(f"parse_commands: {parse_commands}")
 
         # NOTE: Get all the copy commands
-        # with open('data.txt', 'r') as file:
-        #     data = json.loads(file.read())
         copy_commands = []
-        for row in data:
-            if 'function' in row and row['function'] == 'copy':
-                copy_commands.append(row.copy())
+        [copy_commands.append(row.copy()) for row in data if 'function' in row and row['function'] == 'copy']
         print(f"copy_commands: {copy_commands}")
 
         # NOTE: Put the two lists together and say which list it came from as well as the item number for that list
@@ -40,8 +34,6 @@ class TestClass:
         print(f"functional_commands: {functional_commands}")
         # NOTE: Get random sampling of data
         random_commands = []
-        # with open('data.txt', 'r') as file:
-        #     data = json.loads(file.read())
         random_commands = random.sample(data, 2)
         print(f"random_commands: {random_commands}")
 
