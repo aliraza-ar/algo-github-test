@@ -4,7 +4,13 @@ import pytest
 
 
 class TestClass:
-    def test_method(self) -> (dict, dict, dict, dict, ):
+    # Parameterized pytest
+    # with open('data.txt', 'r') as file:
+    #     data = json.loads(file.read())
+    #
+    # @pytest.mark.parametrize("args", data)
+    # def test_method(self, args)
+    def test_method(self, ) -> (dict, dict, dict, dict, ):
         # NOTE: Get all the parse commands
         with open('data.txt', 'r') as file:
             data = json.loads(file.read())
